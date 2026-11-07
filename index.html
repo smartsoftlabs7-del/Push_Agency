@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PUSH Agency | Live Experiential Marketing & Retail Activations</title>
+  <meta name="description" content="PUSH Agency is the premier experiential marketing and retail activations powerhouse. Delivering high-energy brand ambassadors, nationwide sampling, and live consumer experiences backed by real-time telemetry.">
+  <meta name="theme-color" content="#07080c">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="PUSH Agency | Live Experiential Marketing">
+  <meta property="og:description" content="Transforming brands through immersive live activations and nationwide event staffing.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts: Syne & Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+  <!-- Custom Magnetic Cursor -->
+  <div class="custom-cursor" id="cursor"></div>
+  <div class="custom-cursor-follower" id="cursor-follower"></div>
+
+  <!-- Ambient Background Canvas (Cyber Glow & Grid) -->
+  <canvas id="ambient-canvas" class="ambient-canvas"></canvas>
+
+  <!-- Noise Overlay for Cinematic Texture -->
+  <div class="film-grain"></div>
+
+  <!-- Notification Banner / Live Telemetry Pill -->
+  <div class="top-telemetry-bar">
+    <div class="container telemetry-flex">
+      <div class="live-status">
+        <span class="live-dot pulse"></span>
+        <span class="telemetry-text"><strong class="highlight">LIVE PUSH PULSE™:</strong> 2,840 Brand Ambassadors Active Across 42 Metros Right Now</span>
+      </div>
+      <div class="telemetry-stat-pills">
+        <span class="pill"><i data-lucide="shield-check" class="mini-icon"></i> 100% GPS Verified</span>
+        <span class="pill"><i data-lucide="zap" class="mini-icon"></i> 99.8% Activation Fill Rate</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="site-header" id="header">
+    <div class="container header-container">
+      <a href="#hero" class="brand-logo magnetic-target">
+        <!-- PUSH Agency Logo SVG -->
+        <div class="logo-mark">
+          <svg viewBox="0 0 160 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+            <defs>
+              <linearGradient id="pushGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FF0055" />
+                <stop offset="60%" stop-color="#FF2E7E" />
+                <stop offset="100%" stop-color="#00F0FF" />
+              </linearGradient>
+              <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="4" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+            <!-- Bold Geometric 'PUSH' -->
+            <path d="M4 8H26C34.8 8 41 13.5 41 21C41 28.5 34.8 34 26 34H14V44H4V8ZM14 16V26H25C29 26 31.5 24 31.5 21C31.5 18 29 16 25 16H14Z" fill="#FFFFFF"/>
+            <path d="M48 8H58V29C58 35 62 38 67.5 38C73 38 77 35 77 29V8H87V29C87 40 79 45 67.5 45C56 45 48 40 48 29V8Z" fill="#FFFFFF"/>
+            <path d="M94 36.5L100 32C103.5 35 107.5 37 113 37C117 37 119.5 35.5 119.5 33C119.5 27 96 31 96 17C96 11 101.5 7 111.5 7C118 7 124 9.5 128 13.5L122 18C118.5 15.5 115 14.5 111.5 14.5C108 14.5 106 15.5 106 17.5C106 23 129.5 19 129.5 33C129.5 39.5 124 44 113 44C105 44 98 40.5 94 36.5Z" fill="#FFFFFF"/>
+            <path d="M136 8H146V22H162V8H172V44H162V30H146V44H136V8Z" fill="#FFFFFF"/>
+            <!-- Cyber Neon Forward Slash/Pulse Accelerator -->
+            <path d="M174 6L164 46H173L183 6H174Z" fill="url(#pushGradient)" filter="url(#neonGlow)"/>
+          </svg>
+          <span class="agency-tag">AGENCY</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#activations" class="nav-link magnetic-target">Capabilities</a>
+        <a href="#portfolio" class="nav-link magnetic-target">Case Studies</a>
+        <a href="#technology" class="nav-link magnetic-target">Technology <span class="nav-badge">Pulse™</span></a>
+        <a href="#metrics" class="nav-link magnetic-target">Impact</a>
+        <a href="#funnel-section" class="nav-link magnetic-target">Instant Quote</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Sound Toggle -->
+        <button id="sound-toggle" class="icon-btn magnetic-target" title="Toggle UI Sound Effects" aria-label="Toggle UI Sound">
+          <i data-lucide="volume-2" class="nav-icon" id="sound-icon"></i>
+        </button>
+
+        <!-- CTA Button -->
+        <a href="#funnel-section" class="btn btn-primary magnetic-target glowing-cta">
+          <span class="btn-text">Book an Activation</span>
+          <i data-lucide="arrow-up-right" class="btn-icon"></i>
+        </a>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-toggle" class="mobile-toggle magnetic-target" aria-label="Open Navigation Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="mobile-drawer-inner">
+      <nav class="mobile-nav">
+        <a href="#activations" class="mobile-nav-link">Capabilities</a>
+        <a href="#portfolio" class="mobile-nav-link">Case Studies</a>
+        <a href="#technology" class="mobile-nav-link">Technology (PUSH Pulse)</a>
+        <a href="#metrics" class="mobile-nav-link">National Footprint</a>
+        <a href="#funnel-section" class="mobile-nav-link highlight-link">Book Activation</a>
+      </nav>
+      <div class="mobile-drawer-footer">
+        <div class="live-pill-mobile">
+          <span class="live-dot"></span> 2,840 Active Staff On-Duty
+        </div>
+        <a href="https://wa.me/14805550199?text=Hello%20PUSH%20Agency,%20we%20want%20to%20plan%20a%20live%20activation!" target="_blank" class="btn btn-whatsapp w-full">
+          <i data-lucide="message-circle"></i> Instant WhatsApp Dispatch
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <!-- 4K Video Background with Fallback & Cyber Lighting -->
+      <div class="hero-video-wrapper">
+        <video 
+          autoplay 
+          muted 
+          loop 
+          playsinline 
+          preload="auto"
+          poster="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1920&q=80"
+          class="hero-video"
+          id="hero-bg-video"
+        >
+          <!-- Free high-quality CDN video loop of live crowd & energetic activation -->
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-crowd-at-a-music-festival-jumping-and-partying-43634-large.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-gradient-orb orb-primary"></div>
+        <div class="hero-gradient-orb orb-secondary"></div>
+      </div>
+
+      <!-- Hero Floating UI Card 1: Real-time Campaign Analytics -->
+      <div class="floating-card floating-card-left" id="telemetry-card">
+        <div class="glass-card-header">
+          <div class="card-icon-pulse">
+            <i data-lucide="activity" class="pulse-icon"></i>
+          </div>
+          <div>
+            <h4 class="card-title">Real-Time Campaign Analytics</h4>
+            <span class="card-subtitle">Active Telemetry Stream</span>
+          </div>
+          <span class="badge-live">LIVE</span>
+        </div>
+        <div class="card-metrics-grid">
+          <div class="metric-box">
+            <span class="metric-val" id="metric-samples">348,920</span>
+            <span class="metric-lbl">Live Samples Distributed</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-val text-cyan" id="metric-sentiment">98.4%</span>
+            <span class="metric-lbl">Positive Consumer Sentiment</span>
+          </div>
+        </div>
+        <!-- Live ECG / Activity Chart Visual -->
+        <div class="mini-chart-container">
+          <div class="chart-bars">
+            <span class="bar h-60"></span>
+            <span class="bar h-80"></span>
+            <span class="bar h-40"></span>
+            <span class="bar h-95"></span>
+            <span class="bar h-75"></span>
+            <span class="bar h-90"></span>
+            <span class="bar h-100 highlight"></span>
+          </div>
+          <span class="chart-tag"><i data-lucide="trending-up" class="tag-icon"></i> +34% Engagement Velocity</span>
+        </div>
+      </div>
+
+      <!-- Hero Floating UI Card 2: National Reach -->
+      <div class="floating-card floating-card-right" id="reach-card">
+        <div class="glass-card-header">
+          <div class="card-icon-globe">
+            <i data-lucide="globe" class="globe-icon"></i>
+          </div>
+          <div>
+            <h4 class="card-title">National Reach</h4>
+            <span class="card-subtitle">Coast-to-Coast Deployment</span>
+          </div>
+        </div>
+        <div class="reach-stats">
+          <div class="reach-row">
+            <span class="reach-label">US & Canadian Metros</span>
+            <span class="reach-value text-glow">50 States + Canada</span>
+          </div>
+          <div class="reach-row">
+            <span class="reach-label">Vetted Brand Talent Pool</span>
+            <span class="reach-value">45,000+ Ambassadors</span>
+          </div>
+          <div class="reach-row">
+            <span class="reach-label">Rapid Dispatch SLA</span>
+            <span class="reach-value text-magenta">&lt; 4 Hours Notice</span>
+          </div>
+        </div>
+        <div class="radar-scan-box">
+          <div class="radar-sweep"></div>
+          <div class="radar-dot dot-1" title="New York HQ"></div>
+          <div class="radar-dot dot-2" title="Los Angeles Activation"></div>
+          <div class="radar-dot dot-3" title="Chicago Retail Hub"></div>
+          <div class="radar-dot dot-4" title="Miami Festival Crew"></div>
+          <div class="radar-dot dot-5" title="Dallas Pop-Up"></div>
+          <span class="radar-caption">500+ Concurrent Activation Nodes</span>
+        </div>
+      </div>
+
+      <!-- Main Hero Content -->
+      <div class="container hero-content">
+        <div class="hero-badge magnetic-target">
+          <i data-lucide="sparkles" class="badge-icon"></i>
+          <span>The Next Frontier of Physical Activations</span>
+        </div>
+
+        <h1 class="hero-headline">
+          Transforming Brands Through <br>
+          <span class="text-gradient">Live Experiential Marketing</span>
+        </h1>
+
+        <p class="hero-description">
+          We engineer electrifying brand moments, high-conversion retail pop-ups, and nationwide street teams. Powered by <strong>45,000+ elite brand ambassadors</strong> and real-time GPS telemetry to guarantee measurable retail sales lift.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#funnel-section" class="btn btn-primary btn-lg glowing-cta magnetic-target">
+            <span class="btn-glow-layer"></span>
+            <span class="btn-text">Book an Activation</span>
+            <i data-lucide="zap" class="btn-icon"></i>
+          </a>
+          <a href="#portfolio" class="btn btn-secondary btn-lg magnetic-target">
+            <i data-lucide="play-circle" class="btn-icon"></i>
+            <span class="btn-text">Explore Showcase Reel</span>
+          </a>
+        </div>
+
+        <!-- Trust & Client Logo Ticker -->
+        <div class="hero-trust">
+          <p class="trust-title">TRUSTED BY TIER-1 GLOBAL ENTERPRISES & CULTURE-DEFINING BRANDS</p>
+          <div class="brand-ticker-wrapper">
+            <div class="brand-ticker">
+              <span class="ticker-logo">LACROIX</span>
+              <span class="ticker-logo">NIKE SPORTS</span>
+              <span class="ticker-logo">MIELLE ORGANICS</span>
+              <span class="ticker-logo">SAMSUNG</span>
+              <span class="ticker-logo">RED BULL</span>
+              <span class="ticker-logo">SEPHORA</span>
+              <span class="ticker-logo">P&G BEAUTY</span>
+              <span class="ticker-logo">CVS HEALTH</span>
+              <!-- Repeat for infinite marquee -->
+              <span class="ticker-logo">LACROIX</span>
+              <span class="ticker-logo">NIKE SPORTS</span>
+              <span class="ticker-logo">MIELLE ORGANICS</span>
+              <span class="ticker-logo">SAMSUNG</span>
+              <span class="ticker-logo">RED BULL</span>
+              <span class="ticker-logo">SEPHORA</span>
+              <span class="ticker-logo">P&G BEAUTY</span>
+              <span class="ticker-logo">CVS HEALTH</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <a href="#activations" class="scroll-cue magnetic-target">
+        <span class="cue-text">SCROLL TO DISCOVER</span>
+        <div class="mouse-icon">
+          <div class="mouse-wheel"></div>
+        </div>
+      </a>
+    </section>
+
+    <!-- CORE ACTIVATION CAPABILITIES (SOLVING INDUSTRY FRICTIONS) -->
+    <section class="section capabilities-section" id="activations">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag"><i data-lucide="layers"></i> FULL-SPECTRUM EXECUTION</span>
+          <h2 class="section-title">Engineered to Eliminate <br><span class="text-gradient">Event Staffing Friction</span></h2>
+          <p class="section-subtitle">
+            Outdated agencies leave you blind with unverified staff and zero accountability. PUSH fuses elite human talent with real-time digital intelligence.
+          </p>
+        </div>
+
+        <div class="capabilities-grid">
+          <!-- Card 1 -->
+          <div class="cap-card glass-panel 3d-tilt magnetic-target">
+            <div class="card-glow"></div>
+            <div class="cap-icon-box">
+              <i data-lucide="store" class="cap-icon"></i>
+            </div>
+            <h3 class="cap-title">Retail Activations & In-Store Sampling</h3>
+            <p class="cap-desc">Turn passive aisle browsers into loyal buyers. We deploy hyper-trained product specialists who master your product pitch and drive high-volume register scan lifts.</p>
+            <ul class="cap-list">
+              <li><i data-lucide="check" class="check-icon"></i> Direct Retail POS Sell-Through Boost</li>
+              <li><i data-lucide="check" class="check-icon"></i> Compliant Food & Beverage Pour Permits</li>
+              <li><i data-lucide="check" class="check-icon"></i> Real-time Stock Depletion Reporting</li>
+            </ul>
+            <div class="cap-stat">
+              <strong>+38%</strong> Average In-Store Conversion Surge
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="cap-card glass-panel 3d-tilt magnetic-target featured-cap">
+            <div class="card-glow"></div>
+            <div class="featured-badge">MOST DEMANDED</div>
+            <div class="cap-icon-box">
+              <i data-lucide="users" class="cap-icon"></i>
+            </div>
+            <h3 class="cap-title">Elite Brand Ambassadors & Street Teams</h3>
+            <p class="cap-desc">Our vetted ambassadors are dynamic culture drivers who embody your brand's ethos at major festivals, pop-up stunts, sporting championships, and urban hot-spots.</p>
+            <ul class="cap-list">
+              <li><i data-lucide="check" class="check-icon"></i> 100% Video-Interviewed & Background Checked</li>
+              <li><i data-lucide="check" class="check-icon"></i> High-Energy Interaction & Digital Lead Capture</li>
+              <li><i data-lucide="check" class="check-icon"></i> Multi-City Synchronized Launch Logistics</li>
+            </ul>
+            <div class="cap-stat text-cyan">
+              <strong>45,000+</strong> Pre-Vetted Talent Roster
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="cap-card glass-panel 3d-tilt magnetic-target">
+            <div class="card-glow"></div>
+            <div class="cap-icon-box">
+              <i data-lucide="cpu" class="cap-icon"></i>
+            </div>
+            <h3 class="cap-title">PUSH Pulse™ Real-Time Telemetry</h3>
+            <p class="cap-desc">No more guessing if staff showed up. Our proprietary dashboard provides live GPS geofenced check-ins, hourly consumer engagement metrics, and instant recaps.</p>
+            <ul class="cap-list">
+              <li><i data-lucide="check" class="check-icon"></i> Geofenced Pinpoint Check-ins</li>
+              <li><i data-lucide="check" class="check-icon"></i> Live Photo & Receipt Submissions</li>
+              <li><i data-lucide="check" class="check-icon"></i> Real-Time Automated Client Dashboard</li>
+            </ul>
+            <div class="cap-stat text-magenta">
+              <strong>99.8%</strong> Roster Fulfillment Accuracy
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="cap-card glass-panel 3d-tilt magnetic-target">
+            <div class="card-glow"></div>
+            <div class="cap-icon-box">
+              <i data-lucide="presentation" class="cap-icon"></i>
+            </div>
+            <h3 class="cap-title">Trade Shows & Convention Staffing</h3>
+            <p class="cap-desc">Maximize your massive booth investment at CES, SXSW, Comic-Con, or Medical Expos with multilingual, charismatic product demonstrators and booth hosts.</p>
+            <ul class="cap-list">
+              <li><i data-lucide="check" class="check-icon"></i> High-Speed Badge Scanning & Qualification</li>
+              <li><i data-lucide="check" class="check-icon"></i> Tech-Savvy Hardware & Software Presenters</li>
+              <li><i data-lucide="check" class="check-icon"></i> VIP Crowd Flow & Hospitality Management</li>
+            </ul>
+            <div class="cap-stat">
+              <strong>3.2x</strong> Qualified Booth Lead Velocity
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="cap-card glass-panel 3d-tilt magnetic-target">
+            <div class="card-glow"></div>
+            <div class="cap-icon-box">
+              <i data-lucide="truck" class="cap-icon"></i>
+            </div>
+            <h3 class="cap-title">Nationwide Mobile Sampling Tours</h3>
+            <p class="cap-desc">Custom branded wrapped trailers, sampling trucks, and mobile pop-up containers traversing from coast to coast with turnkey route logistics and permit compliance.</p>
+            <ul class="cap-list">
+              <li><i data-lucide="check" class="check-icon"></i> Full DOT Fleet & Asset Management</li>
+              <li><i data-lucide="check" class="check-icon"></i> Municipal Permitting & Venue Contracts</li>
+              <li><i data-lucide="check" class="check-icon"></i> Cold-Chain & Product Storage Protocol</li>
+            </ul>
+            <div class="cap-stat text-cyan">
+              <strong>50+</strong> Cities In Synchronous Motion
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="cap-card glass-panel 3d-tilt magnetic-target">
+            <div class="card-glow"></div>
+            <div class="cap-icon-box">
+              <i data-lucide="camera" class="cap-icon"></i>
+            </div>
+            <h3 class="cap-title">Immersive Stunts & Viral Social Moments</h3>
+            <p class="cap-desc">We bridge the physical and digital world with high-impact experiential installations designed from the ground up for massive viral TikTok and Instagram UGC.</p>
+            <ul class="cap-list">
+              <li><i data-lucide="check" class="check-icon"></i> Interactive 3D Projection & AR Touchpoints</li>
+              <li><i data-lucide="check" class="check-icon"></i> Instant On-Site Social Sharing Rigs</li>
+              <li><i data-lucide="check" class="check-icon"></i> Influencer & VIP Creator Coordination</li>
+            </ul>
+            <div class="cap-stat text-magenta">
+              <strong>80M+</strong> Organic Social Reach Generated
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DYNAMIC 3D HORIZONTALLY SCROLLING PORTFOLIO GALLERY -->
+    <section class="section portfolio-section" id="portfolio">
+      <div class="container portfolio-head-wrap">
+        <div class="section-header">
+          <span class="section-tag"><i data-lucide="film"></i> PROVEN CASE STUDIES</span>
+          <h2 class="section-title">Immersive Campaigns <br><span class="text-gradient">Engineered to Dominate</span></h2>
+          <p class="section-subtitle">Hover over any case study card to trigger instant interactive micro-playback and explore campaign metrics.</p>
+        </div>
+        <!-- Gallery Navigation Arrows -->
+        <div class="gallery-controls">
+          <button class="gallery-nav-btn magnetic-target" id="gallery-prev" aria-label="Previous Project">
+            <i data-lucide="arrow-left"></i>
+          </button>
+          <button class="gallery-nav-btn magnetic-target" id="gallery-next" aria-label="Next Project">
+            <i data-lucide="arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Horizontal 3D Scroll Track -->
+      <div class="horizontal-scroll-container" id="portfolio-scroll-wrapper">
+        <div class="horizontal-track" id="portfolio-track">
+
+          <!-- Project 1: LaCroix -->
+          <article class="project-card magnetic-target" data-category="Sampling Tour">
+            <div class="card-inner">
+              <div class="video-container">
+                <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80" alt="LaCroix Nationwide Flavor Tour" class="project-poster">
+                <video loop muted playsinline class="project-video" preload="none" data-src="https://assets.mixkit.co/videos/preview/mixkit-young-woman-with-sunglasses-drinking-from-a-can-42289-large.mp4"></video>
+                <div class="video-play-indicator"><i data-lucide="play" class="mini-play"></i> LIVE DEMO</div>
+              </div>
+              <div class="card-content">
+                <div class="card-tags">
+                  <span class="tag">Nationwide Tour</span>
+                  <span class="tag tag-accent">850,000 Samples</span>
+                </div>
+                <h3 class="project-title">LaCroix Sparkling: Summer Flavor Tour</h3>
+                <p class="project-summary">30-City mobile beach activation tour with branded hydration lounges, sampling bars, and synchronized retail push in Target and Kroger.</p>
+                <div class="project-metrics">
+                  <div class="p-stat">
+                    <span class="num text-magenta">+41%</span>
+                    <span class="lbl">Retail Sales Lift</span>
+                  </div>
+                  <div class="p-stat">
+                    <span class="num text-cyan">99.4%</span>
+                    <span class="lbl">Brand Sentiment</span>
+                  </div>
+                  <div class="p-stat">
+                    <span class="num">120</span>
+                    <span class="lbl">Event Days</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2: Nike -->
+          <article class="project-card magnetic-target" data-category="Retail Stunt">
+            <div class="card-inner">
+              <div class="video-container">
+                <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=800&q=80" alt="Nike Air Max Day Experience" class="project-poster">
+                <video loop muted playsinline class="project-video" preload="none" data-src="https://assets.mixkit.co/videos/preview/mixkit-friends-at-a-music-festival-dancing-under-the-sun-43632-large.mp4"></video>
+                <div class="video-play-indicator"><i data-lucide="play" class="mini-play"></i> LIVE DEMO</div>
+              </div>
+              <div class="card-content">
+                <div class="card-tags">
+                  <span class="tag">Flagship Launch</span>
+                  <span class="tag tag-accent">NYC / LA / Chicago</span>
+                </div>
+                <h3 class="project-title">Nike Air Max Day: Street Activation Hub</h3>
+                <p class="project-summary">Underground sneakerhead trials, high-energy athlete hosts, custom laser shoe customization, and instant digital raffle lines.</p>
+                <div class="project-metrics">
+                  <div class="p-stat">
+                    <span class="num text-magenta">140K+</span>
+                    <span class="lbl">Live Attendees</span>
+                  </div>
+                  <div class="p-stat">
+                    <span class="num text-cyan">24M</span>
+                    <span class="lbl">TikTok Reach</span>
+                  </div>
+                  <div class="p-stat">
+                    <span class="num">100%</span>
+                    <span class="lbl">Sell-Out Speed</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3: Mielle Organics -->
+          <article class="project-card magnetic-target" data-category="Retail Pop-Up">
+            <div class="card-inner">
+              <div class="video-container">
+                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80" alt="Mielle Organics Beauty Lounge" class="project-poster">
+                <video loop muted playsinline class="project-video" preload="none" data-src="https://assets.mixkit.co/videos/preview/mixkit-young-woman-with-headphones-laughing-and-enjoying-music-42285-large.mp4"></video>
+                <div class="video-play-indicator"><i data-lucide="play" class="mini-play"></i> LIVE DEMO</div>
+              </div>
+              <div class="card-content">
+                <div class="card-tags">
+                  <span class="tag">Retail Activation</span>
+                  <span class="tag tag-accent">Ulta & Target</span>
+                </div>
+                <h3 class="project-title">Mielle Organics: Root-to-Tip Experience</h3>
+                <p class="project-summary">Interactive hair analysis booths staffed by expert licensed cosmetologist brand ambassadors delivering individualized scalp diagnostics.</p>
+                <div class="project-metrics">
+                  <div class="p-stat">
+                    <span class="num text-magenta">+68%</span>
+                    <span class="lbl">In-Store Lift</span>
+                  </div>
+                  <div class="p-stat">
+                    <span class="num text-cyan">95,000</span>
+                    <span class="lbl">Consultations</span>
+                  </div>
+                  <div class="p-stat">
+                    <span class="num">48</span>
+                    <span class="lbl">Markets</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 4: Samsung Galaxy -->
+          <article class="project-card magnetic-target" data-category="Tech Expo">
+            <div class="card-inner">
+              <div class="video-container">
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80" alt="Samsung Galaxy Experience" class="project-poster">
+                <video loop muted playsinline class="project-video" preload="none" data-src="https://assets.mixkit.co/videos/preview/mixkit-audience-raising-hands-at-a-concert-43635-large.mp4"></video>
+                <div class="video-play-indicator"><i data-lucide="play" class="mini-play"></i> LIVE DEMO</div>
+              </div>
+              <div class="card-content">
+                <div class="card-tags">
+                  <span class="tag">Experiential Arena</span>
+                  <span class="tag tag-accent">CES & SXSW</span>
+                </div>
+                <h3 class="project-title">Samsung Galaxy: Neural Interactive Dome</h3>
+                <p class="project-summary">Tech-fluent product geniuses delivering hands-on foldable display benchmarks, high-speed camera arenas, and real-time gaming demo stages.</p>
+                <div class="project-metrics">
+                  <div class="p-stat">
+                    <span class="num text-magenta">210K+</span>
+                    <span class="lbl">Demos Completed</span>
+                  </div>
+                  <div class="p-stat">
+                    <span class="num text-cyan">4.9/5</span>
+                    <span class="lbl">Satisfaction</span>
+                  </div>
+                  <div class="p-stat">
+                    <span class="num">85</span>
+                    <span class="lbl">Tech Staff</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 5: Red Bull -->
+          <article class="project-card magnetic-target" data-category="Extreme Sports">
+            <div class="card-inner">
+              <div class="video-container">
+                <img src="https://images.unsplash.com/photo-1464375117522-1311d6a5b81f?auto=format&fit=crop&w=800&q=80" alt="Red Bull Action Activation" class="project-poster">
+                <video loop muted playsinline class="project-video" preload="none" data-src="https://assets.mixkit.co/videos/preview/mixkit-crowd-at-a-music-festival-jumping-and-partying-43634-large.mp4"></video>
+                <div class="video-play-indicator"><i data-lucide="play" class="mini-play"></i> LIVE DEMO</div>
+              </div>
+              <div class="card-content">
+                <div class="card-tags">
+                  <span class="tag">Extreme Sports</span>
+                  <span class="tag tag-accent">500,000 Energized</span>
+                </div>
+                <h3 class="project-title">Red Bull Horizon: Action Fan Zone</h3>
+                <p class="project-summary">High-octane mobile wings teams deployed in branded off-road rigs, orchestrating stunt demo rings and instant cold sampling drops.</p>
+                <div class="project-metrics">
+                  <div class="p-stat">
+                    <span class="num text-magenta">500K</span>
+                    <span class="lbl">Cans Handed</span>
+                  </div>
+                  <div class="p-stat">
+                    <span class="num text-cyan">100%</span>
+                    <span class="lbl">Cold-Chain Temp</span>
+                  </div>
+                  <div class="p-stat">
+                    <span class="num">18</span>
+                    <span class="lbl">Cities</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- Scroll Progress Bar -->
+      <div class="container gallery-progress-wrap">
+        <div class="gallery-progress-bar">
+          <div class="gallery-progress-fill" id="gallery-progress"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PUSH PULSE™ PROPRIETARY TECH DASHBOARD HIGHLIGHT -->
+    <section class="section tech-section" id="technology">
+      <div class="container tech-grid">
+        <div class="tech-text">
+          <span class="section-tag"><i data-lucide="terminal"></i> PROPRIETARY EVENT SOFTWARE</span>
+          <h2 class="section-title">PUSH Pulse™ <br><span class="text-gradient">Real-Time Activation Telemetry</span></h2>
+          <p class="section-subtitle">
+            Say goodbye to blurry paper sign-in sheets and unverified staff claims. Our proprietary client portal gives enterprise brand directors 100% transparency from check-in to closeout.
+          </p>
+
+          <div class="tech-feature-list">
+            <div class="tech-feat-item">
+              <div class="feat-icon"><i data-lucide="map-pin"></i></div>
+              <div>
+                <h4>Geofenced GPS Check-In</h4>
+                <p>Staff can only clock in when physically within 50 feet of your event coordinate. Late arrivals or no-shows automatically trigger instant reserve dispatch.</p>
+              </div>
+            </div>
+
+            <div class="tech-feat-item">
+              <div class="feat-icon"><i data-lucide="bar-chart-2"></i></div>
+              <div>
+                <h4>Live Hourly Engagement Feeds</h4>
+                <p>Watch samples handed, leads captured, and customer sentiment flow into your private client executive dashboard in real time.</p>
+              </div>
+            </div>
+
+            <div class="tech-feat-item">
+              <div class="feat-icon"><i data-lucide="camera"></i></div>
+              <div>
+                <h4>On-the-Fly Photo & Receipt Recaps</h4>
+                <p>Ambassadors upload high-resolution booth photos, crowd interactions, and POS inventory scans directly into your secure cloud drive.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Tech Dashboard Mockup -->
+        <div class="tech-dashboard-mockup glass-panel">
+          <div class="mockup-header">
+            <div class="traffic-lights">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <div class="mockup-search-bar">
+              <i data-lucide="lock" class="lock-icon"></i>
+              <span>pulse.pushagency.com/dashboard/enterprise-client-live</span>
+            </div>
+            <span class="live-pill-sm"><span class="live-dot pulse"></span> STREAMING</span>
+          </div>
+
+          <div class="mockup-body">
+            <div class="mockup-stats-bar">
+              <div class="m-card">
+                <span class="m-title">Staff On-Site</span>
+                <span class="m-val text-cyan">48 / 48 (100%)</span>
+              </div>
+              <div class="m-card">
+                <span class="m-title">Samples Delivered</span>
+                <span class="m-val text-magenta">14,892</span>
+              </div>
+              <div class="m-card">
+                <span class="m-title">Lead Scans</span>
+                <span class="m-val">3,420</span>
+              </div>
+            </div>
+
+            <div class="mockup-map-visual">
+              <div class="mockup-radar-grid"></div>
+              <div class="map-point point-a">
+                <span class="point-beacon"></span>
+                <span class="point-tooltip">Downtown Chicago (16 Staff)</span>
+              </div>
+              <div class="map-point point-b">
+                <span class="point-beacon"></span>
+                <span class="point-tooltip">NYC Times Square (24 Staff)</span>
+              </div>
+              <div class="map-point point-c">
+                <span class="point-beacon"></span>
+                <span class="point-tooltip">Miami Bayfront (8 Staff)</span>
+              </div>
+              <div class="mockup-bottom-status">
+                <i data-lucide="check-circle" class="status-check"></i>
+                <span>All 48 brand ambassadors authenticated via GPS & facial verification</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIVE METRICS & NATIONAL SCALE IMPACT -->
+    <section class="section metrics-section" id="metrics">
+      <div class="container">
+        <div class="metrics-banner glass-panel">
+          <div class="metric-item">
+            <div class="metric-counter" data-target="45000">45,000+</div>
+            <div class="metric-label">Elite Brand Ambassadors</div>
+            <div class="metric-sub">Interviewed, vetted & trained</div>
+          </div>
+          <div class="metric-divider"></div>
+
+          <div class="metric-item">
+            <div class="metric-counter" data-target="99.8">99.8%</div>
+            <div class="metric-label">Staff Fill Rate Guarantee</div>
+            <div class="metric-sub">Zero activation drop-outs</div>
+          </div>
+          <div class="metric-divider"></div>
+
+          <div class="metric-item">
+            <div class="metric-counter" data-target="50">50</div>
+            <div class="metric-label">States Covered + Canada</div>
+            <div class="metric-sub">Tier 1, 2, and 3 markets</div>
+          </div>
+          <div class="metric-divider"></div>
+
+          <div class="metric-item">
+            <div class="metric-counter" data-target="15000000">15M+</div>
+            <div class="metric-label">Live Consumer Handshakes</div>
+            <div class="metric-sub">Measurable physical conversion</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE DATA-CAPTURE FUNNEL (MOCKUP & INSTANT ACTIVATION ESTIMATOR) -->
+    <section class="section funnel-section" id="funnel-section">
+      <div class="container funnel-container">
+        <div class="section-header text-center">
+          <span class="section-tag"><i data-lucide="zap"></i> NO MORE STATIC FORMS</span>
+          <h2 class="section-title">Design Your Activation <br><span class="text-gradient">Get An Instant Scope & Match</span></h2>
+          <p class="section-subtitle">
+            Skip the 2-week email chains. Customize your experiential requirements below to calculate immediate talent availability, estimated reach, and priority dispatch.
+          </p>
+        </div>
+
+        <div class="funnel-card glass-panel" id="activation-funnel">
+          <!-- Step Indicators -->
+          <div class="funnel-steps-header">
+            <div class="step-indicator active" data-step="1">
+              <span class="step-num">1</span>
+              <span class="step-name">Activation Type</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step-indicator" data-step="2">
+              <span class="step-num">2</span>
+              <span class="step-name">Footprint & Staff</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step-indicator" data-step="3">
+              <span class="step-num">3</span>
+              <span class="step-name">Goals & Deliverables</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step-indicator" data-step="4">
+              <span class="step-num">4</span>
+              <span class="step-name">Dispatch Brief</span>
+            </div>
+          </div>
+
+          <!-- Dynamic Funnel Body -->
+          <form id="funnel-form" onsubmit="return false;">
+
+            <!-- STEP 1: Activation Category -->
+            <div class="funnel-step active" id="step-1">
+              <h3 class="funnel-step-title">What type of activation are you planning?</h3>
+              <p class="funnel-step-desc">Select the primary format of your physical experiential marketing event.</p>
+
+              <div class="option-grid">
+                <label class="option-card active">
+                  <input type="radio" name="activationType" value="retail-sampling" checked>
+                  <div class="option-content">
+                    <i data-lucide="store" class="option-icon"></i>
+                    <h4>Retail In-Store Sampling</h4>
+                    <p>Grocery, Big-Box, Liquor & Specialty store product demos.</p>
+                  </div>
+                </label>
+
+                <label class="option-card">
+                  <input type="radio" name="activationType" value="festival-stunt">
+                  <div class="option-content">
+                    <i data-lucide="flame" class="option-icon"></i>
+                    <h4>Festival & Live Brand Stunt</h4>
+                    <p>Music festivals, high-impact public flash mobs, and fan zones.</p>
+                  </div>
+                </label>
+
+                <label class="option-card">
+                  <input type="radio" name="activationType" value="trade-show">
+                  <div class="option-content">
+                    <i data-lucide="briefcase" class="option-icon"></i>
+                    <h4>Trade Show & Convention</h4>
+                    <p>Booth traffic drivers, badge scanners, and tech demonstrators.</p>
+                  </div>
+                </label>
+
+                <label class="option-card">
+                  <input type="radio" name="activationType" value="street-team">
+                  <div class="option-content">
+                    <i data-lucide="map" class="option-icon"></i>
+                    <h4>Street Team & Mobile Tour</h4>
+                    <p>Guerrilla hand-to-hand sampling and wrapped vehicle tours.</p>
+                  </div>
+                </label>
+              </div>
+
+              <div class="funnel-footer">
+                <div></div>
+                <button type="button" class="btn btn-primary funnel-next-btn magnetic-target" data-next="2">
+                  <span>Continue to Scope</span>
+                  <i data-lucide="arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- STEP 2: Scope, Staffing & Locations -->
+            <div class="funnel-step" id="step-2">
+              <h3 class="funnel-step-title">Define your footprint & talent requirements</h3>
+              <p class="funnel-step-desc">Specify geographic target and required team size.</p>
+
+              <div class="scope-controls">
+                <div class="form-group">
+                  <label class="form-label">Primary Target Market(s)</label>
+                  <div class="market-chips">
+                    <button type="button" class="chip active" data-market="New York">New York</button>
+                    <button type="button" class="chip active" data-market="Los Angeles">Los Angeles</button>
+                    <button type="button" class="chip active" data-market="Chicago">Chicago</button>
+                    <button type="button" class="chip" data-market="Miami">Miami</button>
+                    <button type="button" class="chip" data-market="Dallas">Dallas / Austin</button>
+                    <button type="button" class="chip" data-market="Nationwide 20+ Metros">Nationwide 20+ Metros</button>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="slider-header">
+                    <label class="form-label" for="staff-range">Brand Ambassadors Needed Per Market:</label>
+                    <span class="slider-display text-gradient" id="staff-count-display">8 Ambassadors</span>
+                  </div>
+                  <input type="range" min="2" max="100" value="8" step="1" class="custom-slider" id="staff-range">
+                  <div class="slider-ticks">
+                    <span>2 (Boutique)</span>
+                    <span>25 (Mid-Scale)</span>
+                    <span>50 (Regional)</span>
+                    <span>100+ (Full Blitz)</span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="slider-header">
+                    <label class="form-label" for="duration-range">Activation Duration (Days):</label>
+                    <span class="slider-display text-cyan" id="duration-display">3 Days</span>
+                  </div>
+                  <input type="range" min="1" max="30" value="3" step="1" class="custom-slider slider-cyan" id="duration-range">
+                  <div class="slider-ticks">
+                    <span>1 Day Pop-Up</span>
+                    <span>7 Days (Weekly Blitz)</span>
+                    <span>30 Days (Sustained Tour)</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="funnel-footer">
+                <button type="button" class="btn btn-outline funnel-prev-btn magnetic-target" data-prev="1">
+                  <i data-lucide="arrow-left"></i>
+                  <span>Back</span>
+                </button>
+                <button type="button" class="btn btn-primary funnel-next-btn magnetic-target" data-next="3">
+                  <span>Continue to Deliverables</span>
+                  <i data-lucide="arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- STEP 3: Goals & ROI Deliverables -->
+            <div class="funnel-step" id="step-3">
+              <h3 class="funnel-step-title">What are your primary campaign KPIs?</h3>
+              <p class="funnel-step-desc">Select all objectives you want PUSH Agency to track and optimize.</p>
+
+              <div class="kpi-grid">
+                <label class="kpi-checkbox active">
+                  <input type="checkbox" name="kpi" value="sampling" checked>
+                  <div class="kpi-box">
+                    <i data-lucide="coffee"></i>
+                    <span>High-Volume Sampling</span>
+                  </div>
+                </label>
+
+                <label class="kpi-checkbox active">
+                  <input type="checkbox" name="kpi" value="leads" checked>
+                  <div class="kpi-box">
+                    <i data-lucide="qr-code"></i>
+                    <span>Digital Lead & Email Capture</span>
+                  </div>
+                </label>
+
+                <label class="kpi-checkbox active">
+                  <input type="checkbox" name="kpi" value="ugc" checked>
+                  <div class="kpi-box">
+                    <i data-lucide="video"></i>
+                    <span>Social Media & TikTok UGC</span>
+                  </div>
+                </label>
+
+                <label class="kpi-checkbox">
+                  <input type="checkbox" name="kpi" value="retail-sales">
+                  <div class="kpi-box">
+                    <i data-lucide="shopping-bag"></i>
+                    <span>Immediate POS Retail Sellout</span>
+                  </div>
+                </label>
+
+                <label class="kpi-checkbox">
+                  <input type="checkbox" name="kpi" value="app-downloads">
+                  <div class="kpi-box">
+                    <i data-lucide="smartphone"></i>
+                    <span>App Installs & Trial Sign-ups</span>
+                  </div>
+                </label>
+
+                <label class="kpi-checkbox">
+                  <input type="checkbox" name="kpi" value="vip-hospitality">
+                  <div class="kpi-box">
+                    <i data-lucide="award"></i>
+                    <span>VIP Lounge & Influencer Hosting</span>
+                  </div>
+                </label>
+              </div>
+
+              <!-- Live Projection Pill -->
+              <div class="projection-preview glass-panel">
+                <div class="preview-item">
+                  <span class="preview-lbl">Estimated Consumer Engagements:</span>
+                  <span class="preview-val text-magenta" id="preview-engagements">48,000+ Interactions</span>
+                </div>
+                <div class="preview-item">
+                  <span class="preview-lbl">PUSH Pulse™ Dispatch Time:</span>
+                  <span class="preview-val text-cyan">Within 48 Hours Guaranteed</span>
+                </div>
+              </div>
+
+              <div class="funnel-footer">
+                <button type="button" class="btn btn-outline funnel-prev-btn magnetic-target" data-prev="2">
+                  <i data-lucide="arrow-left"></i>
+                  <span>Back</span>
+                </button>
+                <button type="button" class="btn btn-primary funnel-next-btn magnetic-target" data-next="4">
+                  <span>Review & Match Talent</span>
+                  <i data-lucide="arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- STEP 4: Brand Contact & Instant Quote Dispatch -->
+            <div class="funnel-step" id="step-4">
+              <h3 class="funnel-step-title">Generate Your Activation Proposal</h3>
+              <p class="funnel-step-desc">Enter your enterprise brand details to lock in your priority talent reservation.</p>
+
+              <div class="contact-form-grid">
+                <div class="input-wrap">
+                  <label for="contact-name">Full Name *</label>
+                  <input type="text" id="contact-name" class="custom-input" placeholder="e.g. Sarah Jenkins" required>
+                </div>
+                <div class="input-wrap">
+                  <label for="contact-email">Brand / Corporate Email *</label>
+                  <input type="email" id="contact-email" class="custom-input" placeholder="e.g. sjenkins@nike.com" required>
+                </div>
+                <div class="input-wrap">
+                  <label for="contact-brand">Company / Brand Name *</label>
+                  <input type="text" id="contact-brand" class="custom-input" placeholder="e.g. Nike / Energy Drink Co." required>
+                </div>
+                <div class="input-wrap">
+                  <label for="contact-phone">Phone / WhatsApp Number</label>
+                  <input type="tel" id="contact-phone" class="custom-input" placeholder="+1 (555) 000-0000">
+                </div>
+              </div>
+
+              <!-- Real-time Brief Summary Card -->
+              <div class="quote-summary-card glass-panel">
+                <div class="summary-header">
+                  <span class="summary-badge"><i data-lucide="check-circle-2"></i> Activation Scope Configured</span>
+                  <span class="summary-id" id="proposal-id">REF: #PUSH-2026-LIVE</span>
+                </div>
+                <div class="summary-details">
+                  <span id="summary-text">Retail In-Store Sampling • 3 Markets • 8 Ambassadors • 3 Days Duration</span>
+                </div>
+              </div>
+
+              <div class="funnel-footer">
+                <button type="button" class="btn btn-outline funnel-prev-btn magnetic-target" data-prev="3">
+                  <i data-lucide="arrow-left"></i>
+                  <span>Adjust Scope</span>
+                </button>
+                <button type="submit" id="submit-funnel-btn" class="btn btn-primary btn-lg glowing-cta magnetic-target">
+                  <span class="btn-text">Generate Instant Talent Match</span>
+                  <i data-lucide="zap" class="btn-icon"></i>
+                </button>
+              </div>
+            </div>
+
+          </form>
+
+          <!-- Funnel Success Celebration Screen (Revealed upon submit) -->
+          <div class="funnel-success-screen" id="funnel-success">
+            <div class="success-icon-wrap">
+              <i data-lucide="check-circle" class="success-checkmark"></i>
+            </div>
+            <h3 class="success-title">Activation Scope Confirmed!</h3>
+            <p class="success-desc">
+              Your experiential activation brief has been matched against our <strong>45,000+ talent database</strong>. A PUSH Senior Activation Director has reserved your talent options.
+            </p>
+            <div class="success-actions">
+              <a href="https://wa.me/14805550199?text=Hi%20PUSH%20Agency!%20I%20just%20submitted%20my%20activation%20brief%20and%20want%20to%20fast-track%20my%20event%20booking." target="_blank" class="btn btn-whatsapp magnetic-target">
+                <i data-lucide="message-circle"></i>
+                <span>Fast-Track on WhatsApp Dispatch</span>
+              </a>
+              <button type="button" class="btn btn-outline magnetic-target" id="reset-funnel-btn">
+                <span>Create Another Activation</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS / BRAND ACCELERATION -->
+    <section class="section testimonial-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag"><i data-lucide="quote"></i> EXECUTIVE REVIEWS</span>
+          <h2 class="section-title">Why Leading CMOs <br><span class="text-gradient">Bet On PUSH Agency</span></h2>
+        </div>
+
+        <div class="testimonials-grid">
+          <div class="testimonial-card glass-panel magnetic-target">
+            <div class="quote-stars">★★★★★</div>
+            <p class="quote-body">"PUSH took our 30-city sampling tour and executed with military precision. Having live GPS check-ins and real-time bottle scan numbers gave our executive board total confidence."</p>
+            <div class="quote-author">
+              <div class="author-avatar av-1"></div>
+              <div>
+                <strong>Marcus Vance</strong>
+                <span>VP of Field Marketing, Beverage Conglomerate</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card glass-panel magnetic-target">
+            <div class="quote-stars">★★★★★</div>
+            <p class="quote-body">"When our primary agency had a 40% staff no-show on day one of Comic-Con, PUSH deployed 24 vetted, enthusiastic brand ambassadors within 3 hours. They saved our \$500k activation."</p>
+            <div class="quote-author">
+              <div class="author-avatar av-2"></div>
+              <div>
+                <strong>Elena Rostova</strong>
+                <span>Global Experiential Lead, Tier-1 Gaming Studio</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card glass-panel magnetic-target">
+            <div class="quote-stars">★★★★★</div>
+            <p class="quote-body">"Our retail sell-through across 120 Target locations surged by +48% during the PUSH campaign. Their ambassadors don't just stand there—they genuinely sell and connect."</p>
+            <div class="quote-author">
+              <div class="author-avatar av-3"></div>
+              <div>
+                <strong>Darnell Washington</strong>
+                <span>Head of Retail Growth, Organic Beauty Brand</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL HIGH-ENERGY CALL TO ACTION -->
+    <section class="section cta-banner-section">
+      <div class="container">
+        <div class="cta-banner-card glass-panel">
+          <div class="cta-glow-bg"></div>
+          <div class="cta-banner-content">
+            <span class="banner-pill"><i data-lucide="rocket"></i> NATIONWIDE RAPID DISPATCH</span>
+            <h2 class="cta-banner-headline">Ready To Make Your Brand <br><span class="text-gradient">Unmissable In The Real World?</span></h2>
+            <p class="cta-banner-sub">
+              Lock in your tier-1 brand ambassadors, interactive setups, and retail sampling tours today. Instant booking confirmation within 24 hours.
+            </p>
+            <div class="cta-buttons">
+              <a href="#funnel-section" class="btn btn-primary btn-lg glowing-cta magnetic-target">
+                <span>Book an Activation Now</span>
+                <i data-lucide="zap"></i>
+              </a>
+              <a href="https://wa.me/14805550199?text=Hello%20PUSH%20Agency,%20we%20have%20an%20urgent%20enterprise%20activation%20request." target="_blank" class="btn btn-whatsapp btn-lg magnetic-target">
+                <i data-lucide="message-circle"></i>
+                <span>Direct WhatsApp Hotline</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#hero" class="brand-logo footer-logo">
+          <svg viewBox="0 0 160 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+            <path d="M4 8H26C34.8 8 41 13.5 41 21C41 28.5 34.8 34 26 34H14V44H4V8ZM14 16V26H25C29 26 31.5 24 31.5 21C31.5 18 29 16 25 16H14Z" fill="#FFFFFF"/>
+            <path d="M48 8H58V29C58 35 62 38 67.5 38C73 38 77 35 77 29V8H87V29C87 40 79 45 67.5 45C56 45 48 40 48 29V8Z" fill="#FFFFFF"/>
+            <path d="M94 36.5L100 32C103.5 35 107.5 37 113 37C117 37 119.5 35.5 119.5 33C119.5 27 96 31 96 17C96 11 101.5 7 111.5 7C118 7 124 9.5 128 13.5L122 18C118.5 15.5 115 14.5 111.5 14.5C108 14.5 106 15.5 106 17.5C106 23 129.5 19 129.5 33C129.5 39.5 124 44 113 44C105 44 98 40.5 94 36.5Z" fill="#FFFFFF"/>
+            <path d="M136 8H146V22H162V8H172V44H162V30H146V44H136V8Z" fill="#FFFFFF"/>
+            <path d="M174 6L164 46H173L183 6H174Z" fill="url(#pushGradient)"/>
+          </svg>
+          <span class="agency-tag">AGENCY</span>
+        </a>
+        <p class="footer-desc">
+          PUSH Agency is the premier live experiential marketing and high-conversion event staffing partner for North America's top brands.
+        </p>
+        <div class="footer-telemetry">
+          <span class="telemetry-ping"><span class="live-dot pulse"></span> All Nodes Operational</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="col-title">Activations</h4>
+        <ul class="col-links">
+          <li><a href="#activations">Retail Sampling & Demos</a></li>
+          <li><a href="#activations">Brand Ambassadors</a></li>
+          <li><a href="#activations">Trade Show & Expos</a></li>
+          <li><a href="#activations">Mobile Marketing Tours</a></li>
+          <li><a href="#activations">Guerrilla Street Teams</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="col-title">Technology</h4>
+        <ul class="col-links">
+          <li><a href="#technology">PUSH Pulse™ Portal</a></li>
+          <li><a href="#technology">Geofenced GPS Check-In</a></li>
+          <li><a href="#technology">Live Field Reporting</a></li>
+          <li><a href="#technology">Talent Quality Scoring</a></li>
+          <li><a href="#funnel-section">Interactive Estimator</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="col-title">Headquarters</h4>
+        <p class="hq-address">
+          PUSH Experiential HQ<br>
+          1250 S. Mill Avenue, Suite 300<br>
+          Tempe, AZ 85281<br>
+          <strong>Enterprise Dispatch:</strong> +1 (480) 555-0199
+        </p>
+        <div class="social-links">
+          <a href="#" class="social-icon" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+          <a href="#" class="social-icon" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+          <a href="#" class="social-icon" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+          <a href="#" class="social-icon" aria-label="Youtube"><i data-lucide="youtube"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom container">
+      <p>© 2026 PUSH Agency Inc. All Rights Reserved. Engineered for Experiential Dominance.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Protocol</a>
+        <span>•</span>
+        <a href="#">Terms of Engagement</a>
+        <span>•</span>
+        <a href="#">Talent Portal</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP BOOKING BUTTON WITH LIVE POPUP -->
+  <div class="whatsapp-floating-widget" id="whatsapp-widget">
+    <div class="whatsapp-popup" id="whatsapp-popup">
+      <div class="wa-popup-header">
+        <div class="wa-avatar">
+          <div class="wa-avatar-img"></div>
+          <span class="wa-status-dot"></span>
+        </div>
+        <div class="wa-info">
+          <strong>PUSH Rapid Dispatch</strong>
+          <span><span class="live-dot pulse"></span> Active • Replies in &lt; 2 min</span>
+        </div>
+        <button class="wa-close" id="wa-close-btn" aria-label="Close Chat Popup">×</button>
+      </div>
+      <div class="wa-popup-body">
+        <p class="wa-bubble">
+          ⚡ <strong>Hi there!</strong> Looking to staff an upcoming event or plan a nationwide retail activation? Let's connect directly with our dispatch team.
+        </p>
+      </div>
+      <div class="wa-popup-footer">
+        <a href="https://wa.me/14805550199?text=Hello%20PUSH%20Agency!%20We%20want%20to%20inquire%20about%20event%20staffing%20and%20activations." target="_blank" class="btn btn-whatsapp-direct">
+          <i data-lucide="send"></i>
+          <span>Start Instant WhatsApp Chat</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Pulsing WhatsApp Launcher Button -->
+    <button class="whatsapp-trigger magnetic-target" id="whatsapp-trigger" aria-label="Contact PUSH on WhatsApp">
+      <span class="wa-pulse-ring"></span>
+      <i data-lucide="message-circle" class="wa-main-icon"></i>
+      <span class="wa-badge">1</span>
+    </button>
+  </div>
+
+  <!-- Audio elements for micro-interactions -->
+  <audio id="audio-click" preload="auto">
+    <source src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="audio-hover" preload="auto">
+    <source src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="app.js"></script>
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+  </script>
+</body>
+</html>
